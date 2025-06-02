@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TrolStore - Ana Sayfa</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header>
+        <img src="https://i.imgur.com/j799wEy.jpeg" alt="TrolStore Logo" class="logo" />
+        <span class="brand-center">TrolStore</span>
+        <nav>
+            <a href="login.html">Giriş Yap</a>
+            <a href="ekipmanlar.html">Ekipmanlar</a>
+            <a href="sistemler.html">Bilgisayar Sistemleri</a>
+        </nav>
+    </header>
+    <main class="container" style="position:relative;">
+        <div id="cart-summary-panel">
+            <span style="font-size:18px;">🛒 Sepet: <span id="cart-total-header">0₺</span></span>
+            <span style="font-size:16px;">💰 Bakiye: <span id="header-balance">32.000₺</span></span>
+        </div>
+        <section class="welcome-section">
+            <h1 class="main-title">TrolStore'a Hoş Geldin!</h1>
+            <p class="subtitle">Türkiye'nin en eğlenceli trol ürünleri mağazası 🎉</p>
+        </section>
+        <section class="category-cards">
+            <a href="ekipmanlar.html" class="category-card">
+                <img src="https://img.icons8.com/color/96/000000/keyboard.png" alt="Ekipmanlar" />
+                <span>Ekipmanlar</span>
+            </a>
+            <a href="sistemler.html" class="category-card">
+                <img src="https://img.icons8.com/color/96/000000/computer.png" alt="Sistemler" />
+                <span>Bilgisayar Sistemleri</span>
+            </a>
+            <a href="#" class="category-card" style="pointer-events:none;opacity:0.5;">
+                <img src="https://img.icons8.com/color/96/000000/gift.png" alt="Çok Yakında" />
+                <span>Çok Yakında!</span>
+            </a>
+        </section>
+        <section class="deal-of-day">
+            <h3>🎁 Günün Fırsatı</h3>
+            <div class="deal-card">
+                <div style="font-size:64px;display:flex;align-items:center;justify-content:center;width:96px;height:96px;">🖱️</div>
+                <div class="deal-info">
+                    <h4>Trol RGB Mouse</h4>
+                    <p class="deal-desc">Işık hızında tıklama, %100 trollük garantisi!</p>
+                    <div class="deal-prices">
+                        <span class="old-price">399₺</span>
+                        <span class="new-price">249₺</span>
+                    </div>
+                    <button class="add-to-cart" data-name="Trol RGB Mouse" data-price="249">Sepete Ekle</button>
+                </div>
+            </div>
+        </section>
+        <section class="advantages">
+            <h3>Neden TrolStore?</h3>
+            <div class="adv-list">
+                <div class="adv-item">📦 Hızlı Kargo</div>
+                <div class="adv-item"><img src="https://img.icons8.com/color/48/000000/headset.png" alt="Destek"/> Mizahi Destek</div>
+                <div class="adv-item"><img src="https://img.icons8.com/color/48/000000/lock-2.png" alt="Güvenli"/> Güvenli Alışveriş</div>
+            </div>
+        </section>
+
+        <section class="mascot-section">
+            <img src="https://i.imgur.com/j799wEy.jpeg" alt="Trol Maskot" class="mascot-img" />
+            <p class="mascot-speech">“Burada alışveriş yapmak <b>trollük</b> kadar kolay!”</p>
+        </section>
+    </main>
+    <div id="chatbot-fab">🤖</div>
+    <div class="chatbot" id="mainChatbot" style="display:none; right:90px; bottom:20px;">
+        <div class="chat-header" onclick="toggleChat()">TrolBot 💬</div>
+        <div class="chat-body" id="chatBody">
+            <div class="message bot">Merhaba! Sana nasıl trol yardım edebilirim?</div>
+            <div class="quick-questions">
+                <button>📦 Kargo ne zaman gelir?</button>
+                <button>🔁 İade nasıl yapılır?</button>
+                <button>🛡️ Garanti var mı?</button>
+                <button>🗨️ Benimle Konuş</button>
+                <button>🛠️ Destek Talebi Aç</button>
+            </div>
+            <div class="user-input">
+                <input type="text" id="userQuestion" placeholder="TrolBot'a yaz..." />
+                <button onclick="submitQuestion()">Gönder</button>
+            </div>
+            <div id="ticket-response" class="message bot" style="display:none;"></div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        // FAB aç/kapat
+        const fab = document.getElementById('chatbot-fab');
+        const mainChatbot = document.getElementById('mainChatbot');
+        fab.onclick = function() {
+            if(mainChatbot.style.display === 'none' || mainChatbot.style.display === '') mainChatbot.style.display = 'flex';
+            else mainChatbot.style.display = 'none';
+        };
+    </script>
+</body>
+</html>

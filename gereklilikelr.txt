@@ -1,0 +1,6 @@
+
+
+sunucu baslatma:
+
+cd "C:\Users\parti\Desktop\TrolBot"
+node server.js

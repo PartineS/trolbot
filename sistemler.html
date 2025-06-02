@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <title>TrolStore - Sistemler</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <img src="https://i.imgur.com/j799wEy.jpeg" alt="TrolStore Logo" class="logo" />
+    <span class="brand-center">TrolStore</span>
+    <nav>
+      <a href="index.html">Ana Sayfa</a>
+      <a href="ekipmanlar.html">Ekipmanlar</a>
+      <a href="sistemler.html">Bilgisayar Sistemleri</a>
+    </nav>
+  </header>
+  <main class="container" style="position:relative;">
+    <div id="cart-summary-panel">
+      <span style="font-size:18px;">🛒 Sepet: <span id="cart-total-header">0₺</span></span>
+      <span style="font-size:16px;">💰 Bakiye: <span id="header-balance">32.000₺</span></span>
+    </div>
+    <h2>Bilgisayar Sistemleri</h2>
+    <div class="product-grid">
+      <div class="product-card"><span style="font-size:32px;">💻</span><br>Trol Oyun Sistemi 1<br><span>12499₺</span><button class="add-to-cart" data-name="Trol Oyun Sistemi 1" data-price="12499">Sepete Ekle</button></div>
+      <div class="product-card"><span style="font-size:32px;">🖥️</span><br>Trol Oyun Sistemi 2<br><span>14999₺</span><button class="add-to-cart" data-name="Trol Oyun Sistemi 2" data-price="14999">Sepete Ekle</button></div>
+      <div class="product-card"><span style="font-size:32px;">💻</span><br>Trol İş Bilgisayarı 1<br><span>10200₺</span><button class="add-to-cart" data-name="Trol İş Bilgisayarı 1" data-price="10200">Sepete Ekle</button></div>
+      <div class="product-card"><span style="font-size:32px;">💻</span><br>Trol İş Bilgisayarı 2<br><span>11700₺</span><button class="add-to-cart" data-name="Trol İş Bilgisayarı 2" data-price="11700">Sepete Ekle</button></div>
+      <div class="product-card"><span style="font-size:32px;">🖥️</span><br>Trol Render Sistemi<br><span>19999₺</span><button class="add-to-cart" data-name="Trol Render Sistemi" data-price="19999">Sepete Ekle</button></div>
+      <div class="product-card"><span style="font-size:32px;">💻</span><br>Trol Ofis Bilgisayarı<br><span>8750₺</span><button class="add-to-cart" data-name="Trol Ofis Bilgisayarı" data-price="8750">Sepete Ekle</button></div>
+      <div class="product-card"><span style="font-size:32px;">💻</span><br>Trol Mini PC<br><span>5999₺</span><button class="add-to-cart" data-name="Trol Mini PC" data-price="5999">Sepete Ekle</button></div>
+      <div class="product-card"><span style="font-size:32px;">🖥️</span><br>Trol Masaüstü Paket<br><span>17300₺</span><button class="add-to-cart" data-name="Trol Masaüstü Paket" data-price="9300">Sepete Ekle</button></div>
+      <div class="product-card"><span style="font-size:32px;">💻</span><br>Trol Gamer Set<br><span>15800₺</span><button class="add-to-cart" data-name="Trol Gamer Set" data-price="15800">Sepete Ekle</button></div>
+      <div class="product-card"><span style="font-size:32px;">🖥️</span><br>Trol Tasarımcı Set<br><span>17250₺</span><button class="add-to-cart" data-name="Trol Tasarımcı Set" data-price="17250">Sepete Ekle</button></div>
+    </div>
+  </main>
+  <div id="chatbot-fab">🤖</div>
+  <div class="chatbot" id="mainChatbot" style="display:none; right:90px; bottom:20px;">
+    <div class="chat-header" onclick="toggleChat()">TrolBot 💬</div>
+    <div class="chat-body" id="chatBody">
+      <div class="message bot">Merhaba! Sana nasıl trol yardım edebilirim?</div>
+      <div class="quick-questions">
+        <button>Kargo Ne Zaman Gelir?</button>
+        <button>iade_nasil_yapilir</button>
+        <button>garanti_var_mi</button>
+        <button>benimle_konus</button>
+        <button>destek_talebi_ac</button>
+      </div>
+      <div class="user-input">
+        <input type="text" id="userQuestion" placeholder="TrolBot'a yaz..." />
+        <button onclick="submitQuestion()">Gönder</button>
+      </div>
+      <div id="ticket-response" class="message bot" style="display:none;"></div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

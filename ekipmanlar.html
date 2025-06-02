@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <title>TrolStore - Ekipmanlar</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <img src="https://i.imgur.com/j799wEy.jpeg" alt="TrolStore Logo" class="logo" />
+    <span class="brand-center">TrolStore</span>
+    <nav>
+      <a href="index.html">Ana Sayfa</a>
+      <a href="sistemler.html">Bilgisayar Sistemleri</a>
+    </nav>
+  </header>
+  <main class="container" style="position:relative;">
+    <div id="cart-summary-panel">
+      <span style="font-size:18px;">🛒 Sepet: <span id="cart-total-header">0₺</span></span>
+      <span style="font-size:16px;">💰 Bakiye: <span id="header-balance">32.000₺</span></span>
+    </div>
+    <h2>Ekipmanlar</h2>
+    <div class="product-grid">
+      <div class="product-card"><span style="font-size:32px;">🎧</span><br>Trol Kulaklık<br><span>799₺</span><button class="add-to-cart" data-name="Trol Kulaklık" data-price="799">Sepete Ekle</button></div>
+      <div class="product-card"><span style="font-size:32px;">⌨️</span><br>Trol Klavye<br><span>499₺</span><button class="add-to-cart" data-name="Trol Klavye" data-price="499">Sepete Ekle</button></div>
+      <div class="product-card"><span style="font-size:32px;">🖱️</span><br>Trol Mouse<br><span>350₺</span><button class="add-to-cart" data-name="Trol Mouse" data-price="350">Sepete Ekle</button></div>
+      <div class="product-card"><span style="font-size:32px;">🎤</span><br>Trol Mikrofon<br><span>600₺</span><button class="add-to-cart" data-name="Trol Mikrofon" data-price="600">Sepete Ekle</button></div>
+      <div class="product-card"><span style="font-size:32px;">📷</span><br>Trol Webcam<br><span>900₺</span><button class="add-to-cart" data-name="Trol Webcam" data-price="900">Sepete Ekle</button></div>
+      <div class="product-card"><span style="font-size:32px;">🎮</span><br>Trol Gamepad<br><span>300₺</span><button class="add-to-cart" data-name="Trol Gamepad" data-price="300">Sepete Ekle</button></div>
+      <div class="product-card"><span style="font-size:32px;">🖱️</span><br>Trol Mousepad<br><span>150₺</span><button class="add-to-cart" data-name="Trol Mousepad" data-price="150">Sepete Ekle</button></div>
+      <div class="product-card"><span style="font-size:32px;">🖥️</span><br>Trol Monitör Standı<br><span>450₺</span><button class="add-to-cart" data-name="Trol Monitör Standı" data-price="450">Sepete Ekle</button></div>
+      <div class="product-card"><span style="font-size:32px;">🔊</span><br>Trol Hoparlör<br><span>650₺</span><button class="add-to-cart" data-name="Trol Hoparlör" data-price="650">Sepete Ekle</button></div>
+      <div class="product-card"><span style="font-size:32px;">🔌</span><br>Trol USB Hub<br><span>280₺</span><button class="add-to-cart" data-name="Trol USB Hub" data-price="280">Sepete Ekle</button></div>
+    </div>
+  </main>
+  <div id="chatbot-fab">🤖</div>
+  <div class="chatbot" id="mainChatbot" style="display:none; right:90px; bottom:20px;">
+    <div class="chat-header" onclick="toggleChat()">TrolBot 💬</div>
+    <div class="chat-body" id="chatBody">
+      <div class="message bot">Merhaba! Sana nasıl trol yardım edebilirim?</div>
+      <div class="quick-questions">
+        <button>Kargo Ne Zaman Gelir?</button>
+        <button>İade Nasıl Yapılır?</button>
+        <button>Siparişimi Nasıl İptal Ederim</button>
+        <button>Garanti Var Mı</button>
+        <button>Benimle Konuş</button>
+        <button>Destek Talebi Aç</button>
+      </div>
+      <div class="user-input">
+        <input type="text" id="userQuestion" placeholder="TrolBot'a yaz..." />
+        <button onclick="submitQuestion()">Gönder</button>
+      </div>
+      <div id="ticket-response" class="message bot" style="display:none;"></div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

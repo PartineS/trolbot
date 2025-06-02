@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <title>TrolStore - Giriş</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
+</head>
+<body class="login-body">
+  <div class="login-container" id="login-container">
+    <img src="https://i.imgur.com/j799wEy.jpeg" alt="TrolStore Logo" class="logo" style="margin-bottom:10px;" />
+    <h1 class="login-title">Giriş Yapın</h1>
+    <input type="text" id="username" placeholder="Kullanıcı Adı" />
+    <input type="password" id="password" placeholder="Şifre" />
+    <button id="login-btn">Giriş</button>
+    <button id="show-register-btn" style="margin-left:10px; background:#2d2dff; color:#fff;">Kayıt Ol</button>
+    <p id="loginError"></p>
+  </div>
+  <div class="login-container" id="register-container" style="display:none;">
+    <img src="https://i.imgur.com/j799wEy.jpeg" alt="TrolStore Logo" class="logo" style="margin-bottom:10px;" />
+    <h1 class="login-title">Kayıt Ol</h1>
+    <input type="text" id="reg-username" placeholder="Kullanıcı Adı" />
+    <input type="password" id="reg-password1" placeholder="Şifre" />
+    <input type="password" id="reg-password2" placeholder="Şifre Tekrar" />
+    <button id="register-btn">Kayıt Ol</button>
+    <button id="show-login-btn" style="margin-left:10px; background:#2d2dff; color:#fff;">Girişe Dön</button>
+    <p id="registerError"></p>
+  </div>
+  <script>
+    document.getElementById('show-register-btn').onclick = function() {
+      document.getElementById('login-container').style.display = 'none';
+      document.getElementById('register-container').style.display = 'block';
+    };
+    document.getElementById('show-login-btn').onclick = function() {
+      document.getElementById('login-container').style.display = 'block';
+      document.getElementById('register-container').style.display = 'none';
+    };
+
+    document.getElementById('login-btn').onclick = async function() {
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value.trim();
+      document.getElementById('loginError').textContent = '';
+      if (!username || !password) {
+        document.getElementById('loginError').textContent = 'Kullanıcı adı ve şifre gerekli!';
+        return;
+      }
+      try {
+        const resp = await fetch('/api/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username, password })
+        });
+        if (resp.ok) {
+          localStorage.setItem('currentUser', username);
+          window.location.href = 'index.html';
+        } else {
+          document.getElementById('loginError').textContent = 'Kullanıcı adı veya şifre hatalı!';
+        }
+      } catch (err) {
+        document.getElementById('loginError').textContent = 'Sunucuya ulaşılamadı!';
+      }
+    };
+
+    document.getElementById('register-btn').onclick = async function() {
+      const username = document.getElementById('reg-username').value.trim();
+      const password1 = document.getElementById('reg-password1').value.trim();
+      const password2 = document.getElementById('reg-password2').value.trim();
+      document.getElementById('registerError').textContent = '';
+      if (!username || !password1 || !password2) {
+        document.getElementById('registerError').textContent = 'Tüm alanları doldurun!';
+        return;
+      }
+      if (password1 !== password2) {
+        document.getElementById('registerError').textContent = 'Şifreler uyuşmuyor!';
+        return;
+      }
+      try {
+        const resp = await fetch('/api/register', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username, password: password1 })
+        });
+        const data = await resp.json();
+        if (data.success) {
+          // Kayıt başarılıysa mesaj göster ve giriş formuna dön
+          document.getElementById('registerError').style.color = '#7fff4f';
+          document.getElementById('registerError').textContent = 'Kayıt başarıyla oluşturuldu, şimdi giriş yapabilirsiniz.';
+          setTimeout(() => {
+            document.getElementById('registerError').textContent = '';
+            document.getElementById('login-container').style.display = 'block';
+            document.getElementById('register-container').style.display = 'none';
+            // Giriş alanlarını otomatik doldurmak için:
+            document.getElementById('username').value = username;
+            document.getElementById('password').value = '';
+          }, 1800);
+        } else {
+          document.getElementById('registerError').style.color = 'red';
+          document.getElementById('registerError').textContent = data.error || 'Kayıt başarısız!';
+        }
+      } catch (err) {
+        document.getElementById('registerError').style.color = 'red';
+        document.getElementById('registerError').textContent = 'Sunucuya ulaşılamadı!';
+      }
+    };
+  </script>
+</body>
+</html>

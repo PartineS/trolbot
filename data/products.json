@@ -1,0 +1,22 @@
+[
+    {
+        "name": "Gaming Mouse",
+        "price": "120",
+        "oldPrice": "150",
+        "discount": true,
+        "image": "product1.jpg"
+    },
+    {
+        "name": "Gaming Keyboard",
+        "price": "200",
+        "oldPrice": "250",
+        "discount": true,
+        "image": "product2.jpg"
+    },
+    {
+        "name": "High-End PC",
+        "price": "8000",
+        "discount": false,
+        "image": "product3.jpg"
+    }
+]
