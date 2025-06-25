@@ -75,4 +75,3 @@ Contributions are welcome! Please send a pull request or open an issue.
 
 ---
 
-Shopping is now more fun with TrolStore! 🎉
